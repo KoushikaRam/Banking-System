@@ -56,11 +56,11 @@ public:
         cout<<endl;
         cout << "Account Number: " << accountNumber << endl;
         cout << "Owner Name: " << ownerName << endl;
-        cout << "Available Balance: $" << balance << endl;
+        cout << "Available Balance: Rs." << balance << endl;
         cout << "\nTransaction History:" << endl;
         for (const auto& transaction : history) {
             cout << "- " << asctime(localtime(&transaction.timestamp))
-                 << "Type: " << transaction.type << ", Amount: $" << transaction.amount << endl;
+                 << "Type: " << transaction.type << ", Amount: Rs." << transaction.amount << endl;
         }
         cout << endl;
     }
@@ -75,7 +75,7 @@ double getDoubleInput(const string& prompt) {
         } else {
             cout << "Invalid input. Please enter a valid number." << endl;
             cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear input buffer
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
     }
     return value;
@@ -89,9 +89,9 @@ int main() {
     cout << "Enter Account Number: ";
     cin >> accountNumber;
     cout << "Enter Owner Name: ";
-    cin.ignore(); // Clear newline character from input buffer
+    cin.ignore();
     getline(cin, ownerName);
-    initialBalance = getDoubleInput("Enter Initial Balance: $");
+    initialBalance = getDoubleInput("Enter Initial Balance: Rs.");
 
     BankAccount account(accountNumber, ownerName, initialBalance);
 
@@ -107,13 +107,13 @@ int main() {
 
         switch (choice) {
             case 1: {
-                double amount = getDoubleInput("Enter amount to deposit: $");
+                double amount = getDoubleInput("Enter amount to deposit: Rs.");
                 account.deposit(amount);
                 cout << "Deposit successful." << endl;
                 break;
             }
             case 2: {
-                double amount = getDoubleInput("Enter amount to withdraw: $");
+                double amount = getDoubleInput("Enter amount to withdraw: Rs.");
                 if (account.withdraw(amount)) {
                     cout << "Withdrawal successful." << endl;
                 }
@@ -123,7 +123,7 @@ int main() {
                 account.display();
                 break;
             case 4:
-                cout << "\n hank you for using Our System" << endl<<"Have a Nice Day :)"<<endl;
+                cout << "\nThank you for using Our System" << endl<<"Have a Nice Day :)"<<endl;
                 return 0;
             default:
                 cout << "Invalid choice. Please enter a number between 1 and 4." << endl;
